@@ -352,7 +352,7 @@ Fortunately, we do not need to perform any calculations manually. There are R pa
 
 As a thumb rule, if -
 
-- The study proportions ($p_i$) are not too close to 0 or 1 (e.g., most are between 0.2 and 0.8), most favorably, around 0.5.
+- The study proportions ($p_i$) are not too close to 0.5.
 - Thee meta-analysis includes more than 10 studies.
 
 We conduct **meta-analysis (two-step method) using raw proportions.**
