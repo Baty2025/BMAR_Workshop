@@ -666,6 +666,7 @@ Since we are interested in prevalence on the probability scale (0–1), but `brm
 set.seed(123)
 n_samples <- 10000
 y <- rt(n_samples, df = 3) * 2.5
+hist(y)
 x <- plogis(y)
 
 hist(x, breaks = 50, main = "Histogram of inv_logit(y) where y ~ Student_t(3, 0, 2.5)",
@@ -680,12 +681,18 @@ So, on the probability scale, this prior behaves like an informative prior, assi
 #| label: unifrom_prior
 #| eval: true
 y <- runif(n_samples, min = 0, max = 1)
+hist(y)
+
+
+y <- runif(n_samples, min = -11, max = 11)
+hist(y)
+
 x <- plogis(y)
 hist(x, breaks = 50, main = "Histogram of inv_logit(y) where y ~ Uniform(0, 1)",
      xlab = "inv_logit(y)", col = "lightblue", border = "white")
 ```
 
-This prior is **not suitable** for our assumption that NCC prevalence could range from 0% to 100%, as it places most of its probability mass on prevalence values above 50%, giving insufficient support to lower prevalence values
+Similar problem
 
 3.  **Normal (0,1)**
 
@@ -693,6 +700,9 @@ This prior is **not suitable** for our assumption that NCC prevalence could rang
 #| label: noraml_prior_1
 #| eval: true
 y <- rnorm(n_samples, mean = 0, sd = 1)
+hist(y)
+
+
 x <- plogis(y)
 
 
@@ -708,6 +718,7 @@ This prior is comparatively better. However, it is not uninformative; rather, it
 #| label: noraml_prior_2
 #| eval: true
 y <- rnorm(n_samples, mean = 0, sd = 1.5)
+hist(y)
 x <- plogis(y)
 
 
@@ -727,6 +738,7 @@ In the literature, the **Beta(1,1)** distribution is commonly used as a uniform 
 
 
 y <- rbeta(n_samples, shape1 = 1, shape2 = 1)
+hist(y)
 x <- plogis(y)
 
 
@@ -746,6 +758,7 @@ This highlights why it is important to examine priors on both scales. Let's try 
 
 
 y <- rlogis(n_samples, location = 0, scale = 1)
+hist(y)
 x <- plogis(y)
 
 
